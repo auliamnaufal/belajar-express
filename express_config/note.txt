@@ -1,0 +1,4 @@
+Cara konfigurasi di express ada 2:
+
+1. In app configuration
+2. external configuration
