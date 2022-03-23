@@ -3,6 +3,7 @@ module.exports = (req, res, next) => {
 	console.log("METHOD ", req.method)
 	console.log("PATH ", req.path);
 	console.log("HEADERS ", req.headers);
+	console.log("Headers");
 
 	next()
 }

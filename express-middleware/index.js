@@ -10,7 +10,13 @@ const app = express()
 app.use('/', bodyParser.json(), middleware1)
 
 // middleware untuk method POST pada url '/'
-app.post('/', bodyParser.urlencoded({extended: true}), middleware2)
+app.post('/', bodyParser.urlencoded({extended: true}), middleware2, (req, res) => {
+	res.send(req.body)
+})
+
+app.use('/', (req, res) => {
+	res.end("req.headers: " + req.headers)
+})
 
 
 app.listen(process.env.PORT, () => {
