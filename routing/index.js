@@ -2,10 +2,16 @@ require("dotenv").config()
 const express = require("express")
 const app = express()
 
+
 // Routing
 const indexRoute = require("./router/index")
+const userRoute = require("./router/user")
 
-app.use('/', indexRoute)
+app.use(
+	'/', 
+	indexRoute, 
+	userRoute
+)
 
 
 app.listen(process.env.PORT, () => {
