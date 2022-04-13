@@ -4,15 +4,13 @@ const multer = require('multer')
 
 // multer configuration
 const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, path.resolve(__dirname, process.env.PUBLIC_DIR, process.env.UPLOAD_DIR))
-	},
+	destination: './uploads/',
 	filename: (req, file, cb) => {
 		cb(null, `${Date.now()}-${file.originalname}`)
 	}
 })
 
-const multerInstance = multer(storage)
+const multerInstance = multer({storage: storage})
 
 const uploadSingleImage = (req, res, next) => {
 	const upload = multerInstance.single("image")
@@ -21,7 +19,7 @@ const uploadSingleImage = (req, res, next) => {
 			return next(err)
 		}
 
-		return next
+		return next()
 	})
 }
 
@@ -33,7 +31,7 @@ const uploadMultiImage = (req, res, next) => {
 			return next(err)
 		}
 
-		return next
+		return next()
 	})
 }
 

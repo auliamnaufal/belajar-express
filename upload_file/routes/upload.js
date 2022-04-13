@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express')
 
-// import middleware from /upload_file/middleware/upload-image.js using object destructuring
 const {
 	uploadSingleImage, 
 	uploadMultiImage, 
@@ -11,6 +10,7 @@ const {
 const router = express.Router()
 
 router.post("/single-upload", uploadSingleImage, (req, res) => {
+	console.log(req.file.filename)
 	res.status(200).json({
 		message: "File uploaded successfully",
 		file: `${process.env.URL}:${process.env.PORT}/${process.env.UPLOAD_DIR}/${req.file.filename}`
